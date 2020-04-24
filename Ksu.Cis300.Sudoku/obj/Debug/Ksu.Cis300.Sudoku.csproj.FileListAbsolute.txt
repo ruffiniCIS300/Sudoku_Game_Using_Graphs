@@ -1,0 +1,53 @@
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe.config
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csprojResolveAssemblyReference.cache
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.UserInterface.resources
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.Properties.Resources.resources
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.GenerateResource.Cache
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\fall15\HW 6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Graphs.dll
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe.config
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csprojResolveAssemblyReference.cache
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.UserInterface.resources
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.GenerateResource.Cache
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\scholars\spring17\github\Proj6\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.Properties.Resources.resources
+U:\cis300\scholars\spring17\github\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe.config
+U:\cis300\scholars\spring17\github\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring17\github\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe.config
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csprojResolveAssemblyReference.cache
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.UserInterface.resources
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.Properties.Resources.resources
+U:\cis300\scholars\spring17\github\HW6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.GenerateResource.Cache
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe.config
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.pdb
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csprojResolveAssemblyReference.cache
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.UserInterface.resources
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.Properties.Resources.resources
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.GenerateResource.Cache
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.CoreCompileInputs.cache
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.exe
+U:\cis300\scholars\spring19\projects\Proj6_start\Proj6_start\Ksu.Cis300.Sudoku\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.pdb
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe.config
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.exe
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\bin\Debug\Ksu.Cis300.Sudoku.pdb
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\bin\Debug\System.ValueTuple.dll
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csprojAssemblyReference.cache
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.UserInterface.resources
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.Properties.Resources.resources
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.GenerateResource.cache
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.CoreCompileInputs.cache
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.csproj.CopyComplete
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.exe
+C:\Users\Julie\Desktop\cis300\mwf1_30\hw4\starter\Ksu.Cis300.Sudoku\obj\Debug\Ksu.Cis300.Sudoku.pdb
