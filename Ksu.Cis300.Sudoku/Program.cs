@@ -16,7 +16,7 @@ namespace Ksu.Cis300.Sudoku
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserInterface());
+            Application.Run(new uxUserInterface());
         }
     }
 }

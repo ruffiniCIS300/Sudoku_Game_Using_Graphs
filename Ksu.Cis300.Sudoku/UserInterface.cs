@@ -1,6 +1,6 @@
 ﻿/*
  * UserInterface.cs
- * Author: Julie Thornton
+ * Author: Nick Ruffini
  */
 
 using System;
@@ -14,12 +14,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+using Ksu.Cis300.Graphs;
+
 namespace Ksu.Cis300.Sudoku
 {
     /// <summary>
     /// Represents the User Interface for the Sudoku Solver
     /// </summary>
-    public partial class UserInterface : Form
+    public partial class uxUserInterface : Form
     {
         /// <summary>
         /// The size of the Sudoku puzzle
@@ -35,7 +37,7 @@ namespace Ksu.Cis300.Sudoku
         /// <summary>
         /// Sets up the User Interface, including the DataGridView control
         /// </summary>
-        public UserInterface()
+        public uxUserInterface()
         {
             InitializeComponent();
 
@@ -61,9 +63,9 @@ namespace Ksu.Cis300.Sudoku
 
             //DELETE AFTER TESTING
             //Demonstrates how to set cell values in the grid
-            SetCell(0, 0, 4);
-            SetCell(3, 3, 7);
-            SetCell(8, 8, 9);
+            //SetCell(0, 0, 4);
+            //SetCell(3, 3, 7);
+            //SetCell(8, 8, 9);
         }
    
         /// <summary>
@@ -76,5 +78,6 @@ namespace Ksu.Cis300.Sudoku
         {
             uxGrid.Rows[row].Cells[col].Value = value;
         }
+
     }
 }
