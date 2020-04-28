@@ -23,7 +23,7 @@ namespace Ksu.Cis300.Sudoku
         /// <summary>
         /// Public property to get and set the cell's current value
         /// </summary>
-        public int Value { get; set; }
+        public int Value { get; set; } = -1;
         /// <summary>
         /// Public property to get the cell's current row, but cannot be set
         /// </summary>
@@ -36,7 +36,7 @@ namespace Ksu.Cis300.Sudoku
         /// a property to get this cell's available values (“colors”). For example,
         /// spot 1 in the array will be true if 1 is an available value.It should have no set
         /// </summary>
-        public bool[] Moves { get; }
+        public bool[] Moves { get; } = new bool[_gridSize + 1];
 
         /// <summary>
         /// Constructor that creates this specific cell!
@@ -49,9 +49,6 @@ namespace Ksu.Cis300.Sudoku
             Value = val;
             Row = row;
             Col = col;
-
-            // not sure if needed
-            Moves = new bool[_gridSize];
 
             ResetMoves();
         }
@@ -73,7 +70,10 @@ namespace Ksu.Cis300.Sudoku
         /// <param name="index"> Where we are removing this available value from the array </param>
         public void RemoveMove(int index)
         {
-            Moves[index] = false;
+            if (index >= 0)
+            {
+                Moves[index] = false;
+            }
         }
 
         /// <summary>
@@ -85,14 +85,14 @@ namespace Ksu.Cis300.Sudoku
         {
             if (Value == -1)
             {
-                for (int i = 0; i < Moves.Length; i++)
+                for (int i = 0; i < _gridSize; i++)
                 {
                     Moves[i] = true;
                 }
             }
             else
             {
-                for (int i = 0; i < Moves.Length; i++)
+                for (int i = 0; i < _gridSize; i++)
                 {
                     Moves[i] = false;
                 }
