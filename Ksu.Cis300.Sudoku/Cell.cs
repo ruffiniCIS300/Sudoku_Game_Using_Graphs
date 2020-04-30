@@ -35,6 +35,7 @@ namespace Ksu.Cis300.Sudoku
         /// <summary>
         /// a property to get this cell's available values (“colors”). For example,
         /// spot 1 in the array will be true if 1 is an available value.It should have no set
+        /// [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         /// </summary>
         public bool[] Moves { get; } = new bool[_gridSize + 1];
 

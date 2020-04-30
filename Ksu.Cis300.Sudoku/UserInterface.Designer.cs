@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uxPanel = new System.Windows.Forms.Panel();
             this.uxGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -60,29 +60,30 @@
             this.uxGrid.BackgroundColor = System.Drawing.Color.White;
             this.uxGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uxGrid.ColumnHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.uxGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.uxGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.uxGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uxGrid.Location = new System.Drawing.Point(0, 0);
             this.uxGrid.Margin = new System.Windows.Forms.Padding(4);
             this.uxGrid.Name = "uxGrid";
             this.uxGrid.RowHeadersVisible = false;
             this.uxGrid.RowHeadersWidth = 40;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.uxGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.uxGrid.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.uxGrid.RowTemplate.Height = 28;
             this.uxGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.uxGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.uxGrid.Size = new System.Drawing.Size(722, 698);
             this.uxGrid.TabIndex = 0;
+            this.uxGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.uxGrid_CellEndEdit);
             // 
             // menuStrip1
             // 
@@ -92,7 +93,7 @@
             this.uxMenuStrip});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(788, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(788, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,14 +102,15 @@
             this.uxMenuStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxLoadPuzzle});
             this.uxMenuStrip.Name = "uxMenuStrip";
-            this.uxMenuStrip.Size = new System.Drawing.Size(90, 40);
+            this.uxMenuStrip.Size = new System.Drawing.Size(90, 36);
             this.uxMenuStrip.Text = "Tools";
             // 
             // uxLoadPuzzle
             // 
             this.uxLoadPuzzle.Name = "uxLoadPuzzle";
-            this.uxLoadPuzzle.Size = new System.Drawing.Size(301, 44);
+            this.uxLoadPuzzle.Size = new System.Drawing.Size(359, 44);
             this.uxLoadPuzzle.Text = " Load a Puzzle";
+            this.uxLoadPuzzle.Click += new System.EventHandler(this.uxLoadPuzzle_Click);
             // 
             // uxOpenFileDialog
             // 
@@ -122,6 +124,7 @@
             this.uxSolvePuzzleButton.TabIndex = 2;
             this.uxSolvePuzzleButton.Text = "Solve Puzzle";
             this.uxSolvePuzzleButton.UseVisualStyleBackColor = true;
+            this.uxSolvePuzzleButton.Click += new System.EventHandler(this.uxSolvePuzzleButton_Click);
             // 
             // uxUserInterface
             // 

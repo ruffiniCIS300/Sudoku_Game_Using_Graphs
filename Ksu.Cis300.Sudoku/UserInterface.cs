@@ -32,6 +32,11 @@ namespace Ksu.Cis300.Sudoku
         /// The size of each cell on the grid
         /// </summary>
         private const int _cellSize = 40;
+
+        /// <summary>
+        /// Initializes a new Sudoku Object, which serves as the puzzle we are working with.
+        /// </summary>
+        private Sudoku _puzzle = new Sudoku();
        
 
         /// <summary>
@@ -66,6 +71,7 @@ namespace Ksu.Cis300.Sudoku
             //SetCell(0, 0, 4);
             //SetCell(3, 3, 7);
             //SetCell(8, 8, 9);
+            //SetCell(0, 0, -1);
         }
    
         /// <summary>
@@ -76,8 +82,103 @@ namespace Ksu.Cis300.Sudoku
         /// <param name="value">The value to display</param>
         public void SetCell(int row, int col, int value)
         {
-            uxGrid.Rows[row].Cells[col].Value = value;
+            if (value == -1)
+            {
+                uxGrid.Rows[row].Cells[col].Value = "";
+            }
+            else
+            {
+                uxGrid.Rows[row].Cells[col].Value = value;
+            }
+
         }
 
+        /// <summary>
+        /// Loops through each cell in the puzzle, pulls out its
+        /// current value, and calls the SetCell method to update the user interface to have
+        /// the current cell value
+        /// </summary>
+        private void UpdateDisplay()
+        {
+            for (int row = 0; row < _gridSize; row++)
+            {
+                for (int col = 0; col < _gridSize; col++)
+                {
+                    int value = _puzzle[row, col].Value;
+                    SetCell(row, col, value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Click event for "Load a Puzzle" Menu Item. Checks if the input file is correctly formatted, and
+        /// if it is, calls UpdateDisplay() with the new values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxLoadPuzzle_Click(object sender, EventArgs e)
+        {
+            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = uxOpenFileDialog.FileName;
+
+                try
+                {
+                    _puzzle.ReadPuzzle(fileName);
+
+                    UpdateDisplay();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Input File is ill-formatted");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Click event for the "Solve Puzzle" button. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxSolvePuzzleButton_Click(object sender, EventArgs e)
+        {
+            bool result = _puzzle.ConnectGraph();
+
+            if (result == false)
+            {
+                MessageBox.Show("The graph could not be connected.");
+            }
+            else
+            {
+                bool solvedResult = _puzzle.SolveSudoku();
+                if (solvedResult == false)
+                {
+                    MessageBox.Show("A solution could not be found.");
+                }
+                else
+                {
+                    UpdateDisplay();
+                }
+            }
+            
+        }
+
+        /// <summary>
+        /// Event when the user finishes editing a cell in the grid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uxGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Object value = uxGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if ((intValue >= 1 && intValue <= 9) )
+            }
+            catch(Exception)
+            {
+
+            }
+        }
     }
 }

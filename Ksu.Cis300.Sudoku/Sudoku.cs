@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,7 @@ namespace Ksu.Cis300.Sudoku
         /// <summary>
         /// A 9x9 array of all the cells in the Sudoku puzzle
         /// </summary>
-        Cell[,] _nodes;
+        private Cell[,] _nodes;
 
         /// <summary>
         /// Constructor that initializes the _nodes 2D Array with "empty" values
@@ -125,12 +126,41 @@ namespace Ksu.Cis300.Sudoku
         }
 
         /// <summary>
-        /// 
+        /// Connects all of the cells in the grid together with their appropriate rows, columns and
+        /// 3x3 grids!
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Whether or not all the cells could be connected to their appropriate partners </returns>
         public bool ConnectGraph()
         {
+            // initializes a new graph
+            _graph = new DirectedGraph<Cell, int>();
 
+            // Calls reset moves on all the cells in _nodes
+            for (int row = 0; row < _gridSize; row++)
+            {
+                for (int col = 0; col < _gridSize; col++)
+                {
+                    _nodes[row, col].ResetMoves();
+                }
+            }
+
+            // connects the cells in the graph and returns whether or not it could all be connected 
+            bool result = true;
+            for (int row = 0; row < _gridSize; row++)
+            {
+                for (int col = 0; col < _gridSize; col++)
+                {
+                    bool result1 = ConnectRow(_nodes[row, col]);
+                    bool result2 = ConnectColumn(_nodes[row, col]);
+                    bool result3 = ConnectSmallGrid(_nodes[row, col]);
+
+                    if (result1 == false || result2 == false || result3 == false)
+                    {
+                        result = false;
+                    }
+                }
+            }
+            return result;
         }
 
         /// <summary>
@@ -169,40 +199,45 @@ namespace Ksu.Cis300.Sudoku
             return true;
         }
 
-        //-------------------------------------------------------------------------------------------
-
         /// <summary>
         /// Tries to add edges between the parameter cell and every other cell in the 
         /// same row, using the ConnectEdge method.
         /// </summary>
         /// <param name="cell"> Cell we are using as the source node to add edges to </param>
         /// <returns> Whether or not it could successfully add all the edges</returns>
-        private bool ConnectRow(Cell source)
+        private bool ConnectRow(Cell current)
         {
-            // flag for whether all the edges could be added
-            bool allAdded = true;
+            int column = current.Col / 3 * 3;
 
-            for (int i = 0; i < _gridSize; i++)
+            for (int i = 0; i < column; i++)
             {
                 // Makes sure we don't compare the same cell to itself, which will always return false
-                if (i != source.Col)
+                if (i != current.Col)
                 {
-                    bool added = ConnectEdge(source, _nodes[source.Row, i]);
+                    Cell destination = _nodes[current.Row, i];
+                    // if there isn't an edge between the 2, try and add one!
+                    bool added = ConnectEdge(current, destination);
                     if (added == false)
                     {
-                        allAdded = false;
+                        return false;
                     }
                 }
             }
-
-            if (allAdded)
+            for (int j = column + 3; j < _gridSize; j++)
             {
-                return true;
+                // Makes sure we don't compare the same cell to itself, which will always return false
+                if (j != current.Col)
+                {
+                    Cell destination = _nodes[current.Row, j];
+                    // if there isn't an edge between the 2, try and add one!
+                    bool added = ConnectEdge(current, destination);
+                    if (added == false)
+                    {
+                        return false;
+                    }
+                }
             }
-            else
-            {
-                return false;
-            }
+            return true;
         }
 
         /// <summary>
@@ -211,32 +246,39 @@ namespace Ksu.Cis300.Sudoku
         /// </summary>
         /// <param name="source"> Cell we are using to connect all other cells in column </param>
         /// <returns> Whether or not all the edges could be added </returns>
-        private bool ConnectColumn(Cell source)
+        private bool ConnectColumn(Cell current)
         {
-            // flag for whether all the edges could be added
-            bool allAdded = true;
+            int row = current.Row / 3 * 3;
 
-            for (int i = 0; i < _gridSize; i++)
+            for (int i = 0; i < row; i++)
             {
                 // Makes sure we don't compare the same cell to itself, which will always return false
-                if (i != source.Row)
+                if (i != current.Row)
                 {
-                    bool added = ConnectEdge(source, _nodes[i, source.Col]);
+                    Cell destination = _nodes[i, current.Col];
+                    // if there isn't an edge between the 2, try and add one!
+                    bool added = ConnectEdge(current, destination);
                     if (added == false)
                     {
-                        allAdded = false;
+                        return false;
                     }
                 }
             }
-
-            if (allAdded)
+            for (int j = row + 3; j < _gridSize; j++)
             {
-                return true;
+                // Makes sure we don't compare the same cell to itself, which will always return false
+                if (j != current.Row)
+                {
+                    Cell destination = _nodes[j, current.Col];
+                    // if there isn't an edge between the 2, try and add one!
+                    bool added = ConnectEdge(current, destination);
+                    if (added == false)
+                    {
+                        return false;
+                    }
+                }
             }
-            else
-            {
-                return false;
-            }
+            return true;
         }
 
         /// <summary>
@@ -245,11 +287,30 @@ namespace Ksu.Cis300.Sudoku
         /// </summary>
         /// <param name="source"> Cell we are trying to link to all other cells in it's 3x3 </param>
         /// <returns> Whether or not all the cell's could be linked </returns>
-        private bool ConnectSmallGrid(Cell source)
+        private bool ConnectSmallGrid(Cell current)
         {
-            bool allAdded = true;
-            source.
-            
+            // Grids labeled from 0-2 (so if on row 7, 7/3 = 2, so grid row 2!)
+            int gridRow = current.Row / 3 * 3;
+            int gridCol = current.Col / 3 * 3;
+
+            for (int row = gridRow; row < 3 + gridRow; row++)
+            {
+                for (int col = gridCol; col < 3 + gridCol; col++)
+                {
+                    // Makes sure we don't compare the same cell to itself, which will always return false
+                    if (row != current.Row || col != current.Col)
+                    {
+                        Cell destination = _nodes[row, col];
+                        // if there isn't an edge between the 2, try and add one!
+                        bool added = ConnectEdge(current, destination);
+                        if (added == false)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         /// <summary>
@@ -274,6 +335,102 @@ namespace Ksu.Cis300.Sudoku
             return numUncolored;
         }
 
+        /// <summary>
+        /// Takes the previously processed cell as
+        /// a parameter, and should return the next uncolored(value = -1) cell in the puzzle
+        /// (“reading” the puzzle left to right, top to bottom) after the parameter cell.
+        /// </summary>
+        /// <param name="previousCell"> Previously processed cell we are starting at </param>
+        /// <returns> The next uncolored cell in the puzzle!</returns>
+        private Cell GetNextCell(Cell previousCell)
+        {
+            // If the cell is null, just look for the first uncolored cell!
+            if (previousCell == null)
+            {
+                for (int row = 0; row < _gridSize; row++)
+                {
+                    for (int col = 0; col < _gridSize; col++)
+                    {
+                        if (_nodes[row, col].Value == -1)
+                        {
+                            return _nodes[row, col];
+                        }
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                int initialRow = previousCell.Row;
+                int initialColumn = previousCell.Col;
+
+                // processes the first, potentially incomplete line
+                for (int col = initialColumn; col < _gridSize; col++)
+                {
+                    if (_nodes[initialRow, col].Value == -1)
+                    {
+                        return _nodes[initialRow, col];
+                    }
+                }
+
+                // processes the rest of the grid!
+                for (int row = initialRow + 1; row < _gridSize; row++)
+                {
+                    for (int col = 0; col < _gridSize; col++)
+                    {
+                        if (_nodes[row, col].Value == -1)
+                        {
+                            return _nodes[row, col];
+                        }
+                    }
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Returns whether or not a solution could be found to the puzzle found in _nodes!
+        /// </summary>
+        /// <param name="uncoloredCells"> Number of uncolored cells left in the puzzle! </param>
+        /// <param name="previouslyColored"> Cell that was most recently colored! </param>
+        /// <returns> Whether or not a solution could be found </returns>
+        private bool SolveSudoku(int uncoloredCells, Cell previouslyColored)
+        {
+            int uncoloredLeft = GetNumUncolored();
+            // if all the cells have been colored, return true
+            if (uncoloredLeft == 0)
+            {
+                return true;
+            }
+            // if they haven't,
+            else
+            {
+                // get the next uncolored cell
+                Cell nextUncolored = GetNextCell(previouslyColored);
+                // for each available color for this uncolored cell (that isn't -1, whose index is 0)
+                for (int i = 1; i < nextUncolored.Moves.Length; i++)
+                {
+                    // if the color is indeed available,
+                    if (nextUncolored.Moves[i] == true)
+                    {
+                        // change the Cell's value to that color
+                        nextUncolored.Value = i;
+
+                        foreach (Cell neighbor in _graph.OutgoingEdges(nextUncolored).
+                    }
+
+                }
+            }
+        }
+
+        /// <summary>
+        /// Public version of the SolveSudoku method that simply calls on it's private counterpart
+        /// </summary>
+        /// <returns> Whether or not a solution could be found </returns>
+        public bool SolveSudoku()
+        {
+            return SolveSudoku(GetNumUncolored(), null);
+        }
 
 
 
