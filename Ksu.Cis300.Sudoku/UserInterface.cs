@@ -164,7 +164,7 @@ namespace Ksu.Cis300.Sudoku
         }
 
         /// <summary>
-        /// Event when the user finishes editing a cell in the grid.
+        /// Event when the user finishes editing a cell in the grid. If the input is valid, updates the cell!
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -173,11 +173,15 @@ namespace Ksu.Cis300.Sudoku
             try
             {
                 Object value = uxGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                if ((intValue >= 1 && intValue <= 9) )
+                if (value == null || value.ToString() == "" || (Convert.ToInt32(value) >= 1 && Convert.ToInt32(value) <= 9) )
+                {
+                    _puzzle.UpdateCell(e.RowIndex, e.ColumnIndex);
+                }
             }
             catch(Exception)
             {
-
+                MessageBox.Show("Invalid Operator entered in a cell");
+                uxGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
             }
         }
     }

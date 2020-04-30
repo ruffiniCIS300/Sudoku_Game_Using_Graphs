@@ -403,24 +403,46 @@ namespace Ksu.Cis300.Sudoku
                 return true;
             }
             // if they haven't,
-            else
+            // get the next uncolored cell
+            Cell nextUncolored = GetNextCell(previouslyColored);
+            // for each available color for this uncolored cell (that isn't -1, whose index is 0)
+            for (int color = 1; color < nextUncolored.Moves.Length; color++)
             {
-                // get the next uncolored cell
-                Cell nextUncolored = GetNextCell(previouslyColored);
-                // for each available color for this uncolored cell (that isn't -1, whose index is 0)
-                for (int i = 1; i < nextUncolored.Moves.Length; i++)
+                // if the color is indeed available,
+                if (nextUncolored.Moves[color] == true)
                 {
-                    // if the color is indeed available,
-                    if (nextUncolored.Moves[i] == true)
+                    // change the Cell's value to that color
+                    nextUncolored.Value = color;
+
+                    // List of affected nodes (those who have had their available colors altered)
+                    List<Cell> affectedCells = new List<Cell>();
+                    // search all nodes to see if they are adjacent to our current!
+                    for (int row = 0; row < _gridSize; row++)
                     {
-                        // change the Cell's value to that color
-                        nextUncolored.Value = i;
-
-                        foreach (Cell neighbor in _graph.OutgoingEdges(nextUncolored).
+                        for (int col = 0; col < _gridSize; col++)
+                        {
+                            // if they are adjacent... (have an edge between them) AND have the color available
+                            int val;
+                            Cell neighbor = _nodes[row, col];
+                            if (_graph.TryGetEdge(nextUncolored, neighbor, out val) && neighbor.Moves[color])
+                            {
+                                // Remove this color from their available moves and add them to the affected list
+                                neighbor.RemoveMove(color);
+                                affectedCells.Add(neighbor);
+                            }
+                        }
                     }
+                    // Recursively look for a solution in the resulting puzzle
+                    SolveSudoku();
 
+                    // if we don't find a solution, add the color back to the affecte cells(?)
+                    foreach (Cell affectedCell in affectedCells)
+                    {
+                        affectedCell.AddBackMove(color);
+                    }
                 }
             }
+            return false;
         }
 
         /// <summary>
