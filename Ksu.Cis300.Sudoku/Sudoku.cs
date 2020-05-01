@@ -145,7 +145,6 @@ namespace Ksu.Cis300.Sudoku
             }
 
             // connects the cells in the graph and returns whether or not it could all be connected 
-            bool result = true;
             for (int row = 0; row < _gridSize; row++)
             {
                 for (int col = 0; col < _gridSize; col++)
@@ -156,11 +155,11 @@ namespace Ksu.Cis300.Sudoku
 
                     if (result1 == false || result2 == false || result3 == false)
                     {
-                        result = false;
+                        return false;
                     }
                 }
             }
-            return result;
+            return true;
         }
 
         /// <summary>
@@ -179,22 +178,16 @@ namespace Ksu.Cis300.Sudoku
                     return false;
                 }
             }
-            else
-            {
-                // create an edge between the 2 Cells with a weight of 0
-                _graph.AddEdge(source, destination, 0);
+            // create an edge between the 2 Cells with a weight of 0
+            _graph.AddEdge(source, destination, 0);
 
-                // if one of the cell's has a value other than default (-1), remove that value from
-                // it's Moves array
-                if (source.Value != -1)
-                {
-                    destination.RemoveMove(source.Value);
-                }
-                else if (destination.Value != -1)
-                {
-                    source.RemoveMove(destination.Value);
-                }
+            // if one of the cell's has a value other than default (-1), remove that value from
+            // it's Moves array
+            if (destination.Value != -1)
+            {
+                source.RemoveMove(destination.Value);
             }
+            
 
             return true;
         }
@@ -396,28 +389,26 @@ namespace Ksu.Cis300.Sudoku
         /// <returns> Whether or not a solution could be found </returns>
         private bool SolveSudoku(int uncoloredCells, Cell previouslyColored)
         {
-            int uncoloredLeft = GetNumUncolored();
             // if all the cells have been colored, return true
-            if (uncoloredLeft == 0)
+            if (uncoloredCells == 0)
             {
                 return true;
             }
             // if they haven't,
             // get the next uncolored cell
             Cell nextUncolored = GetNextCell(previouslyColored);
+
             // for each available color for this uncolored cell (that isn't -1, whose index is 0)
             for (int color = 1; color < nextUncolored.Moves.Length; color++)
             {
                 // if the color is indeed available,
                 if (nextUncolored.Moves[color] == true)
                 {
-                    // change the Cell's value to that color
-                    nextUncolored.Value = color;
 
                     // List of affected nodes (those who have had their available colors altered)
                     List<Cell> affectedCells = new List<Cell>();
                     // search all nodes to see if they are adjacent to our current!
-                    for (int row = 0; row < _gridSize; row++)
+                    /*for (int row = 0; row < _gridSize; row++)
                     {
                         for (int col = 0; col < _gridSize; col++)
                         {
@@ -431,15 +422,34 @@ namespace Ksu.Cis300.Sudoku
                                 affectedCells.Add(neighbor);
                             }
                         }
-                    }
-                    // Recursively look for a solution in the resulting puzzle
-                    SolveSudoku();
+                    }*/
 
+                    foreach(Edge<Cell, int> edge in _graph.OutgoingEdges(nextUncolored))
+                    {
+                        if (edge.Destination.Moves[color])
+                        {
+                            // Remove this color from their available moves and add them to the affected list
+                            edge.Destination.RemoveMove(color);
+                            affectedCells.Add(edge.Destination);
+                        }
+                    }
+                    // change the Cell's value to that color
+                    nextUncolored.Value = color;
+
+                    // Recursively look for a solution in the resulting puzzle
+                    bool solved = SolveSudoku(uncoloredCells - 1, nextUncolored);
+
+                    if (solved)
+                    {
+                        return true;
+                    }
                     // if we don't find a solution, add the color back to the affecte cells(?)
                     foreach (Cell affectedCell in affectedCells)
                     {
                         affectedCell.AddBackMove(color);
                     }
+
+                    nextUncolored.Value = -1;
                 }
             }
             return false;

@@ -86,14 +86,14 @@ namespace Ksu.Cis300.Sudoku
         {
             if (Value == -1)
             {
-                for (int i = 0; i < _gridSize; i++)
+                for (int i = 0; i <= _gridSize; i++)
                 {
                     Moves[i] = true;
                 }
             }
             else
             {
-                for (int i = 0; i < _gridSize; i++)
+                for (int i = 0; i <= _gridSize; i++)
                 {
                     Moves[i] = false;
                 }

@@ -175,7 +175,7 @@ namespace Ksu.Cis300.Sudoku
                 Object value = uxGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 if (value == null || value.ToString() == "" || (Convert.ToInt32(value) >= 1 && Convert.ToInt32(value) <= 9) )
                 {
-                    _puzzle.UpdateCell(e.RowIndex, e.ColumnIndex);
+                    _puzzle.UpdateCell(e.RowIndex, e.ColumnIndex, Convert.ToInt32(value));
                 }
             }
             catch(Exception)
